@@ -1,4 +1,4 @@
-package main;
+package main.task4;
 
 import java.io.*;
 import java.nio.file.Files;

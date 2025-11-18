@@ -1,4 +1,4 @@
-package main;
+package main.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,11 +7,11 @@ import java.sql.SQLException;
 
 public class ConnectionManager implements AutoCloseable {
     private Connection connection;
-    private main.DatabaseConfig config;
+    private DatabaseConfig config;
     private boolean autoCommit;
 
 
-    public ConnectionManager(main.DatabaseConfig config, boolean autoCommit) throws SQLException {
+    public ConnectionManager(DatabaseConfig config, boolean autoCommit) throws SQLException {
         this.config = config;
         this.autoCommit = autoCommit;
         this.connection = openConnection();

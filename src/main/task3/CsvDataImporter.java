@@ -1,4 +1,6 @@
-package main;
+package main.task3;
+
+import main.common.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

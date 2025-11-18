@@ -1,4 +1,9 @@
-package main;
+package main.task4;
+
+import main.common.ConnectionManager;
+import main.common.DatabaseConfig;
+import main.task3.DataQuery;
+import main.task3.DataWriter;
 
 import java.sql.Connection;
 import java.sql.SQLException;
