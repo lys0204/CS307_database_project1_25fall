@@ -354,15 +354,11 @@ public class CsvDataImporter {
         System.out.println("批量插入完成: " + totalInserted + " 条记录到表 " + tableName);
     }
     
-    /**
-     * 插入 M2M 关联表，使用 ON CONFLICT 处理重复键和外键约束
-     */
+
     private void insertM2MTable(String tableName, String[] columns, List<Map<String, Object>> data) throws SQLException {
         if (data == null || data.isEmpty()) {
             return;
         }
-        
-（使用复合主键）
         StringBuilder conflictClause = new StringBuilder("ON CONFLICT (");
         for (int i = 0; i < columns.length; i++) {
             if (i > 0) conflictClause.append(", ");

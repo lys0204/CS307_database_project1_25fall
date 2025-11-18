@@ -296,10 +296,7 @@ public class CsvDataImporterCompare {
         insertM2MTable("user_liked_reviews", new String[]{"authorid", "reviewid"}, userLikesData);
         insertM2MTable("user_follows", new String[]{"followerid", "followingid"}, userFollowsData);
     }
-    
-    /**
-     * 插入主表，使用 ON CONFLICT 处理主键冲突
-     */
+
     private void insertWithConflict(String tableName, String[] conflictColumns, String[] allColumns, List<Map<String, Object>> data) throws SQLException {
         if (data == null || data.isEmpty()) {
             return;
@@ -354,15 +351,11 @@ public class CsvDataImporterCompare {
         System.out.println("单条插入完成: " + totalInserted + " 条记录到表 " + tableName);
     }
     
-    /**
-     * 插入 M2M 关联表，使用 ON CONFLICT 处理重复键和外键约束
-     */
+
     private void insertM2MTable(String tableName, String[] columns, List<Map<String, Object>> data) throws SQLException {
         if (data == null || data.isEmpty()) {
             return;
         }
-        
-（使用复合主键）
         StringBuilder conflictClause = new StringBuilder("ON CONFLICT (");
         for (int i = 0; i < columns.length; i++) {
             if (i > 0) conflictClause.append(", ");
@@ -411,10 +404,7 @@ public class CsvDataImporterCompare {
         
         System.out.println("单条插入完成: " + totalInserted + " 条记录到表 " + tableName);
     }
-    
-    /**
-     * 设置 PreparedStatement 参数
-     */
+
     private void setParameter(PreparedStatement pstmt, int index, Object value) throws SQLException {
         if (value == null) {
             pstmt.setNull(index, java.sql.Types.NULL);
